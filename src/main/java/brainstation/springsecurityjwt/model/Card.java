@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Card {
     private int id;
-    private int cardNumber;
+    private String cardNumber;
     private String userName;
     private String expiration;
     private String entity;
@@ -13,7 +13,7 @@ public class Card {
 
     public Card(){}
 
-    public Card(@JsonProperty("id") int id, @JsonProperty("cardNumber") int cardNumber, @JsonProperty("userName") String userName, @JsonProperty("expiration") String expiration, @JsonProperty("entity") String entity, @JsonProperty("accountId") int accountId) {
+    public Card(@JsonProperty("id") int id, @JsonProperty("cardNumber") String cardNumber, @JsonProperty("userName") String userName, @JsonProperty("expiration") String expiration, @JsonProperty("entity") String entity, @JsonProperty("accountId") int accountId) {
         this.id = id;
         this.cardNumber = cardNumber;
         this.userName = userName;
@@ -39,11 +39,11 @@ public class Card {
         this.id = id;
     }
 
-    public int getCardNumber() {
+    public String getCardNumber() {
         return cardNumber;
     }
 
-    public void setCardNumber(int cardNumber) {
+    public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
     }
 

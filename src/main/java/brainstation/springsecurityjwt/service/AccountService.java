@@ -5,7 +5,8 @@ import brainstation.springsecurityjwt.model.Account;
 import java.util.List;
 
 public interface AccountService {
-    public void insertAccount(Account account);
+    public Account insertAccount(Account account);
     public List<Account> getAccountsById(int id);
+    public List<Account> getAllAccounts();
     public void updateAccount(Account account);
 }

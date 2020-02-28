@@ -12,8 +12,9 @@ public class AccountDto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private int accountNumber;
+    private String accountNumber;
     private String currency;
+    private String balance;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
@@ -24,10 +25,11 @@ public class AccountDto {
 
     public AccountDto(){}
 
-    public AccountDto(int id, int accountNumber, String currency, UserDto userDto, List<MovementDto> movements) {
+    public AccountDto(int id, String accountNumber, String currency, String balance, UserDto userDto, List<MovementDto> movements) {
         this.id = id;
         this.accountNumber = accountNumber;
         this.currency = currency;
+        this.balance = balance;
         this.userDto = userDto;
         this.movements = movements;
     }
@@ -36,6 +38,7 @@ public class AccountDto {
         this.id = account.getId();
         this.accountNumber = account.getAccountNumber();
         this.currency = account.getCurrency();
+        this.balance = account.getBalance();
         this.userDto = new UserDto(account.getUser());
     }
 
@@ -47,11 +50,11 @@ public class AccountDto {
         this.id = id;
     }
 
-    public int getAccountNumber() {
+    public String getAccountNumber() {
         return accountNumber;
     }
 
-    public void setAccountNumber(int accountNumber) {
+    public void setAccountNumber(String accountNumber) {
         this.accountNumber = accountNumber;
     }
 
@@ -61,6 +64,14 @@ public class AccountDto {
 
     public void setCurrency(String currency) {
         this.currency = currency;
+    }
+
+    public String getBalance() {
+        return balance;
+    }
+
+    public void setBalance(String balance) {
+        this.balance = balance;
     }
 
     public UserDto getUser() { return userDto; }
@@ -81,6 +92,7 @@ public class AccountDto {
                 "id=" + id +
                 ", accountNumber=" + accountNumber +
                 ", currency='" + currency + '\'' +
+                ", balance='" + balance + '\'' +
                 ", userDto=" + userDto +
                 ", movements=" + movements +
                 '}';

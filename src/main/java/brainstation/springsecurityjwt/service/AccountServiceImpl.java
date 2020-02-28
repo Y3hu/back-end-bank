@@ -2,7 +2,9 @@ package brainstation.springsecurityjwt.service;
 
 import brainstation.springsecurityjwt.dao.AccountDao;
 import brainstation.springsecurityjwt.dto.AccountDto;
+import brainstation.springsecurityjwt.dto.MovementDto;
 import brainstation.springsecurityjwt.model.Account;
+import brainstation.springsecurityjwt.model.Movement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -39,7 +41,7 @@ public class AccountServiceImpl implements AccountService{
 
     @Transactional
     @Override
-    public void insertAccount(Account account) {
+    public Account insertAccount(Account account) {
         if(account.getUser().getAccounts() == null) account.getUser().setAccounts(new ArrayList<>());
 
         if(account.getUser().getMessages() == null) account.getUser().setMessages(new ArrayList<>());
@@ -47,9 +49,13 @@ public class AccountServiceImpl implements AccountService{
         AccountDto accountDto = new AccountDto(account);
 
         if(accountDto.getMovements() == null) accountDto.setMovements(new ArrayList<>());
-        accountDao.save(accountDto);
+
+        AccountDto accountSaved = accountDao.save(accountDto);
+
+        return new Account(accountSaved);
     }
 
+    @Transactional
     @Override
     public List<Account> getAccountsById(int id) {
         List<AccountDto> accountList = accountDao.findAll();
@@ -57,12 +63,41 @@ public class AccountServiceImpl implements AccountService{
         for(AccountDto a: accountList){
             if(a.getUser().getId() == id){
                 Account account = new Account(a);
+                List<MovementDto> movementsFound = a.getMovements();
+                List<Movement> movements = new ArrayList<>();
+                for(MovementDto m: movementsFound){
+                    Movement movement = new Movement(m);
+                    movements.add(movement);
+                }
+                account.setMovements(movements);
                 userAccounts.add(account);
             }
         }
         return userAccounts;
     }
 
+    @Transactional
+    @Override
+    public List<Account> getAllAccounts() {
+        List<AccountDto> accountList = accountDao.findAll();
+        List<Account> userAccounts = new ArrayList<>();
+        for(AccountDto a: accountList){
+
+                Account account = new Account(a);
+                List<MovementDto> movementsFound = a.getMovements();
+                List<Movement> movements = new ArrayList<>();
+                for(MovementDto m: movementsFound){
+                    Movement movement = new Movement(m);
+                    movements.add(movement);
+                }
+                account.setMovements(movements);
+                userAccounts.add(account);
+
+        }
+        return userAccounts;
+    }
+
+    @Transactional
     @Override
     public void updateAccount(Account account) {
         insertAccount(account);

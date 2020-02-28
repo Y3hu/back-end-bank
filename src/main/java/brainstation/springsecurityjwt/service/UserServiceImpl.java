@@ -41,22 +41,39 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Transactional
+    @Override
     public void insertUser(User user){
+        if(user.getMessages() == null) user.setMessages(new ArrayList<>());
+        if(user.getAccounts() == null) user.setAccounts(new ArrayList<>());
         userDao.save(new UserDto(user));
     }
 
+    @Transactional
     @Override
-    public List<User> getAllUsers() {
-        List<User> userList = new ArrayList<>();
-        List<UserDto> userDtoList= userDao.findAll();
-
-        for(UserDto u: userDtoList){
-            User user = new User(u);
-            userList.add(user);
+    public User findUserByEmailAndPassword(String email, String password) {
+        List<UserDto> usersList = userDao.findAll();
+        for(UserDto u: usersList){
+            if(u.getEmail().equals(email) && u.getPassword().equals(password)){
+                return new User(u);
+            }
         }
 
-        return userList;
+        return null;
     }
+
+//    @Override
+//    public List<User> getAllUsers() {
+//        List<User> userList = new ArrayList<>();
+//        List<UserDto> userDtoList= userDao.findAll();
+//
+//        for(UserDto u: userDtoList){
+//            User user = new User(u);
+//            userList.add(user);
+//        }
+//
+//        return userList;
+//    }
 
     @Transactional
     @Override

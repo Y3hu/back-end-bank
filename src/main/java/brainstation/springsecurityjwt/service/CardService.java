@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CardService {
 
-    public void insertCard(Card card);
+    public Card insertCard(Card card);
     public List<Card> getCardsByUserId(int id);
     public void deleteCardById(int id);
 

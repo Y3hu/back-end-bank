@@ -10,7 +10,7 @@ public class CardDto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int cardNumber;
+    private String cardNumber;
     private String userName;
     private String expiration;
     private String entity;
@@ -18,7 +18,7 @@ public class CardDto {
 
     public CardDto(){}
 
-    public CardDto(int id, int cardNumber, String userName, String expiration, String entity, int accountId) {
+    public CardDto(int id, String cardNumber, String userName, String expiration, String entity, int accountId) {
         this.id = id;
         this.cardNumber = cardNumber;
         this.userName = userName;
@@ -44,11 +44,11 @@ public class CardDto {
         this.id = id;
     }
 
-    public int getCardNumber() {
+    public String getCardNumber() {
         return cardNumber;
     }
 
-    public void setCardNumber(int cardNumber) {
+    public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
     }
 

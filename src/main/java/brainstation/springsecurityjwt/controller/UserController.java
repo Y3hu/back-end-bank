@@ -5,8 +5,6 @@ import brainstation.springsecurityjwt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT})
 @RequestMapping("api/user")
 @RestController
@@ -18,14 +16,14 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping
-    public List<User> getAllUsers(){
-        return userService.getAllUsers();
-    }
-
     @GetMapping(path = "{id}")
     public User findUserById(@PathVariable("id") int id){
         return userService.findUserById(id);
+    }
+
+    @GetMapping
+    public User findUserByEmailAndPassword(@RequestParam("email") String email, @RequestParam("password") String password){
+        return userService.findUserByEmailAndPassword(email, password);
     }
 
     @PostMapping

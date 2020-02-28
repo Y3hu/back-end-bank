@@ -18,13 +18,17 @@ public class AccountController {
         this.accountService = accountService;
     }
 
-    @GetMapping(path = "{id}")
-    public List<Account> getAllAccountsByUserId(@PathVariable("id") int id){
-        return accountService.getAccountsById(id);
+    @GetMapping
+    public List<Account> getAllAccountsByUserId(@RequestParam(value = "id", defaultValue = "") int id, @RequestParam(value = "all", defaultValue = "") String all){
+        if(all.equals("yes")){
+            return accountService.getAllAccounts();
+        }else{
+            return accountService.getAccountsById(id);
+        }
     }
 
     @PostMapping
-    public void insertAccount(@RequestBody Account account){
-        accountService.insertAccount(account);
+    public Account insertAccount(@RequestBody Account account){
+        return accountService.insertAccount(account);
     }
 }

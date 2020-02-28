@@ -23,8 +23,10 @@ public class CardServiceImpl implements CardService{
 
     @Transactional
     @Override
-    public void insertCard(Card card) {
-        cardDao.save(new CardDto(card));
+    public Card insertCard(Card card) {
+
+        CardDto cardSaved = cardDao.save(new CardDto(card));
+        return new Card(cardSaved);
     }
 
     @Transactional

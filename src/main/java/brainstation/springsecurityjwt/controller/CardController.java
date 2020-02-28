@@ -19,8 +19,8 @@ public class CardController {
     }
 
     @PostMapping
-    public void insertCard(@RequestBody Card card){
-        cardService.insertCard(card);
+    public Card insertCard(@RequestBody Card card){
+        return cardService.insertCard(card);
     }
 
     @GetMapping(path = "{id}")

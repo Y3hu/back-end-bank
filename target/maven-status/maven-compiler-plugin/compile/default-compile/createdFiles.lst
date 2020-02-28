@@ -1,3 +1,4 @@
+brainstation/springsecurityjwt/dto/FavoriteDto.class
 brainstation/springsecurityjwt/dto/CardDto.class
 brainstation/springsecurityjwt/dto/MovementDto.class
 brainstation/springsecurityjwt/SpringSecurityJwtApplication.class
@@ -8,7 +9,9 @@ brainstation/springsecurityjwt/dto/MessageDto.class
 brainstation/springsecurityjwt/service/AccountService.class
 brainstation/springsecurityjwt/dao/MessageDao.class
 brainstation/springsecurityjwt/security/SecurityConfigurer.class
+brainstation/springsecurityjwt/service/FavoriteServiceImpl.class
 brainstation/springsecurityjwt/service/MessageService.class
+brainstation/springsecurityjwt/model/Favorite.class
 brainstation/springsecurityjwt/model/User.class
 brainstation/springsecurityjwt/filter/JwtRequestFilter.class
 brainstation/springsecurityjwt/service/MovementServiceImpl.class
@@ -17,10 +20,13 @@ brainstation/springsecurityjwt/controller/CardController.class
 brainstation/springsecurityjwt/model/Message.class
 brainstation/springsecurityjwt/dao/UserDao.class
 brainstation/springsecurityjwt/dao/CardDao.class
+brainstation/springsecurityjwt/controller/FavoriteController.class
+brainstation/springsecurityjwt/dao/FavoriteDao.class
 brainstation/springsecurityjwt/controller/Authentication.class
 brainstation/springsecurityjwt/model/Movement.class
 brainstation/springsecurityjwt/dao/AccountDao.class
 brainstation/springsecurityjwt/service/AccountServiceImpl.class
+brainstation/springsecurityjwt/service/FavoriteService.class
 brainstation/springsecurityjwt/dao/MovementDao.class
 brainstation/springsecurityjwt/controller/HelloResource.class
 brainstation/springsecurityjwt/service/CardService.class
