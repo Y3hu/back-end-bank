@@ -31,4 +31,9 @@ public class AccountController {
     public Account insertAccount(@RequestBody Account account){
         return accountService.insertAccount(account);
     }
+
+    @PutMapping
+    public void updateAccount(@RequestBody Account account){
+        accountService.updateAccount(account);
+    }
 }

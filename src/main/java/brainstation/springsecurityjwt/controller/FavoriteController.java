@@ -23,8 +23,8 @@ public class FavoriteController {
         favoriteService.insertFavorite(favorite);
     }
 
-    @GetMapping(path = "{id}")
-    public List<Favorite> getFavoritesByUserId(@RequestParam("id") int id){
+    @GetMapping
+    public List<Favorite> getFavoritesByUserId(@RequestParam(value = "id", defaultValue = "") int id){
         return favoriteService.getFavoritesByUserId(id);
     }
 

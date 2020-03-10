@@ -16,19 +16,22 @@ public class FavoriteDto {
 
     private int userId;
     private int accountId;
+    private int accountOwnerId;
 
     public FavoriteDto(){}
 
-    public FavoriteDto(int id, int userId, int accountId) {
+    public FavoriteDto(int id, int userId, int accountId, int accountOwnerId) {
         this.id = id;
         this.userId = userId;
         this.accountId = accountId;
+        this.accountOwnerId = accountOwnerId;
     }
 
     public FavoriteDto(Favorite favorite){
         this.id = favorite.getId();
         this.userId = favorite.getUserId();
         this.accountId = favorite.getAccountId();
+        this.accountOwnerId = favorite.getAccountOwnerId();
     }
 
     public int getId() {
@@ -53,6 +56,14 @@ public class FavoriteDto {
 
     public void setAccountId(int accountId) {
         this.accountId = accountId;
+    }
+
+    public int getAccountOwnerId() {
+        return accountOwnerId;
+    }
+
+    public void setAccountOwnerId(int accountOwnerId) {
+        this.accountOwnerId = accountOwnerId;
     }
 
     @Override
